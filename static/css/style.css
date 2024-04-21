@@ -870,7 +870,7 @@ span.icon img {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     overflow: hidden;
-    background: #095a83;
+    background: #d8e20a;
     -webkit-transition-property: color;
     transition-property: color;
     -webkit-transition-duration: 0.3s;
@@ -1682,7 +1682,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .footer-box {
-    background: #0b1c2c;
+    background: #43953e;
     padding: 50px 0;
 }
 

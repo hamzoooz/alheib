@@ -10,7 +10,8 @@ LEVEL = (
     ('p6', 'p6'),
     ('p7', 'p7'),
     ('NURS', 'NURS'),
-    ('other', 'other'),
+    ('OUT', 'OUT'),
+    ('CHOICE', 'CHOICE'),
     )
 
 dormitory = (
@@ -22,6 +23,9 @@ dormitory = (
     ('HADIJAH', 'HADIJAH'),
     ('UTHUMAN', 'UTHUMAN'),
     ('ZAHARAH', 'ZAHARAH'),
+    ('HOME', 'HOME'),
+    ('OUT', 'OUT'),
+    
     )
 
 sponsorship_source = (    
@@ -35,9 +39,51 @@ residence_status = (
     )
 
 sponsorship_status = (    
+                      
     ('CONTINUED', 'CONTINUED'),
     ('DROPPED', 'DROPPED'),
-        
+    )
+
+system = (    
+    ('P.D', 'P.D'),
+    ('P.B', 'P.B'),        
+    ('TEACHER', 'TEACHER'),        
+    ('COM', 'COM'),        
+    ('DIRECTOR IICO', 'DIRECTOR IICO'),        
+    )
+
+quran_memorization = (    
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10', '10'),
+    ('11', '11'),
+    ('12', '12'),
+    ('13', '13'),
+    ('14', '14'),
+    ('15', '15'),
+    ('16', '16'),
+    ('17', '17'),
+    ('18', '18'),
+    ('19', '19'),
+    ('20', '20'),
+    ('21', '21'),
+    ('22', '22'),
+    ('23', '23'),
+    ('24', '24'),
+    ('25', '25'),
+    ('26', '26'),
+    ('27', '27'),
+    ('28', '28'),
+    ('29', '29'),
+    ('30', '30'),
     )
 
 
@@ -47,16 +93,18 @@ class Student(models.Model):
     account_no = models.CharField(blank=True, null=True , max_length=255, verbose_name="رقم الحساب - ACCOUNT NO")
     account_holder_name = models.CharField(blank=True, null=True , max_length=255, verbose_name="اسم صاحب الحساب")
     orphan_no = models.CharField(blank=True, null=True , max_length=255, verbose_name="رقم اليتيم - ORPHAN NO")
-    sponsor_no = models.CharField(blank=True, null=True , max_length=255, verbose_name="رقم الكافل - SPONSOR'S NO")
+    sponsor_no =  models.IntegerField(blank=True, null=True , verbose_name="رقم الكافل - SPONSOR'S NO")
     date_of_birth = models.DateField(blank=True, null=True , verbose_name="تاريخ الميلاد - DATE OF BIRTH")
     date_of_death = models.DateField(blank=True, null=True , verbose_name="تاريخ الوفاة - DATE OF DEATH" )
     school = models.CharField(blank=True, null=True , max_length=255, verbose_name="المدرسة - SCHOOL")
-    level = models.CharField(blank=True, null=True , max_length=255, verbose_name="المرحلة - LEVEL", choices=LEVEL, default='P1' )
+    system = models.CharField(blank=True, null=True , max_length=255, verbose_name="النظام - system" , choices=system, default='CHOICE'  )
+    level = models.CharField(blank=True, null=True , max_length=255, verbose_name="المرحلة - LEVEL", choices=LEVEL, default='CHOICE' )
+    
     # class_name = models.CharField(blank=True, null=True , max_length=255, verbose_name="الصف - CLASS")
-    quran_memorization = models.CharField(blank=True, null=True , max_length=255, verbose_name="مقدار الحفظ من القرآن")
+    quran_memorization = models.CharField(blank=True, null=True , max_length=255, verbose_name="مقدار الحفظ من القرآن" ,  choices=quran_memorization, default='0' )
     talents = models.CharField(blank=True, null=True , max_length=255, verbose_name="المواهب")
     abilities = models.CharField(blank=True, null=True , max_length=255, verbose_name="القدرات")
-    residence_status = models.CharField(blank=True, null=True , max_length=255, verbose_name="السكن داخلي / خارجي" )
+    residence_status = models.CharField(blank=True, null=True , max_length=255, verbose_name="السكن داخلي / خارجي"  , choices=residence_status, default='داخلي')
     dormitory = models.CharField(blank=True, null=True , max_length=255, verbose_name="المهجع", choices=dormitory, default='ABUBAKAR', )
     sponsorship_status = models.CharField(blank=True, null=True , max_length=255,choices=sponsorship_status, default='CONTINUED', verbose_name="الكفالة مستمرة أم توقف - SPONSORSHIP CONTINUE OR STOP")
     sponsorship_source = models.CharField(blank=True, null=True , max_length=255, verbose_name="جهة الكفالة الهيئة/بيت الزكاة - SPONSORSHIP IICO OR ZAKAT" , choices=sponsorship_source, default='الهيئة', )
