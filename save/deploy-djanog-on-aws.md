@@ -283,6 +283,8 @@ sudo systemctl status gunicorn
 
 sudo journalctl -u gunicorn
 
+PID=$(systemctl show --value -p MainPID gunicorn.service) && kill -HUP $PID
+
 
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
