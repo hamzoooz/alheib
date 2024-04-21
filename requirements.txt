@@ -16,7 +16,6 @@ djangorestframework
 django-taggit
 django-crispy-forms
 drf_social_oauth2
-
-# django-otp 
-# django-otp-plugins
+pandas
+openpyxl
 
