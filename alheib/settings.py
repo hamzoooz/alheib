@@ -124,34 +124,39 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 STATIC_URL = '/static/'
 
- 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define the root directory where collectstatic will collect static files for deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+# Define additional directories from which to collect static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
+
+# Define the URL for media files
 MEDIA_URL = '/media/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Define the directory where uploaded media files will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-CKEDITOR_UPLOAD_PATH = 'media/cheditor/'
+# CKEditor configuration for uploaded files
+CKEDITOR_UPLOAD_PATH = 'media/ckeditor/'
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
+
+# CKEditor configuration settings
 CKEDITOR_CONFIGS = {
-    'default':
-        {'toolbar': 'full',
-            'width': 'auto',
-            'extraPlugins': ','.join([
-                'codesnippet',
-                'youtube'
-            ]),
-        },
+    'default': {
+        'toolbar': 'full',
+        'width': 'auto',
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'youtube'
+        ]),
+    },
 }
-
-
