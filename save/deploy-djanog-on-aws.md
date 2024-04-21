@@ -239,14 +239,14 @@ deactivate
 
 sudo nano /etc/systemd/system/gunicorn.socket
 
-    [Unit]
-    Description=gunicorn socket
+[Unit]
+Description=gunicorn socket
 
-    [Socket]
-    ListenStream=/run/gunicorn.sock
+[Socket]
+ListenStream=/run/gunicorn.sock
 
-    [Install]
-    WantedBy=sockets.target
+[Install]
+WantedBy=sockets.target
 
 sudo nano /etc/systemd/system/gunicorn.service
 
